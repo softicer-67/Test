@@ -50,12 +50,12 @@ class RingBuffer:
     class __Full:
         def append(self, x):
             self.data[self.cur] = x
-            self.cur = (self.cur+1) % self.max
+            self.cur = (self.cur + 1) % self.max
 
         def get(self):
             return self.data[self.cur:] + self.data[:self.cur]
 
-    def append(self,x):
+    def append(self, x):
         self.data.append(x)
         if len(self.data) == self.max:
             self.cur = 0
@@ -63,6 +63,8 @@ class RingBuffer:
 
     def get(self):
         return self.data
+    
+    # Эта реализация изменяет класс объекта буфера на лету, из класса с неполным буфером на класс с полным буфером, когда он заполняется.
 
 # Вторая реализация:
 
